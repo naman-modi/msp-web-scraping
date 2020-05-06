@@ -30,3 +30,4 @@ elif finalPrice[0] > finalPrice[1]:
   
 else:
     print("\n\n Both Sites have same prize : ", finalPrice[0], "\n\n")
+    
