@@ -26,5 +26,7 @@ if finalPrice[0] < finalPrice[1]:
     print("\n\n Best Price : ", finalPrice[0], "\n Website = ", links[0],"\n\n")
 elif finalPrice[0] > finalPrice[1]:
     print("\n\n Best Price : ", finalPrice[1], "\n Website = ", links[1],"\n\n")
+    
+  
 else:
     print("\n\n Both Sites have same prize : ", finalPrice[0], "\n\n")
