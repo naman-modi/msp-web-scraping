@@ -6,6 +6,7 @@ scrolling.
 
 from selenium import webdriver
 from sys_rar import PracticePWD
+from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by  import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as ec
@@ -33,24 +34,28 @@ driver.implicitly_wait(5)
 
 
 # Notification Pop-up ------------------------------------------------------------------------------------
-driver.find_element_by_xpath('/html/body/div[4]/div/div/div[3]/button[2]').click()
-driver.implicitly_wait(20)
+if "Try on desktop" in driver.page_source:
+     driver.find_element_by_xpath('/html/body/div[4]/div/div/div[3]/button[2]').click()
+     driver.implicitly_wait(20)
+
+
 
 article = '//*[@id="react-root"]/section/main/section/div/div[2]/div'
 count = j = 0
-while True:
+scroll = 0
+while j <= 20:
     count += 1
-    j +=1
-    if count == 8:
-        count = 1
-    print(str(j), " - " ,str(count)) # Displaying on the console -----------------------------------------
+    j += 1
+    if count == 7 or count > 7:
+        count = 7
 
+    print(str(j), " - " ,str(count)) # Displaying on the console -----------------------------------------
     try:
         WebDriverWait(driver, 10).until(
             ec.visibility_of_element_located((By.XPATH, article + '/article[{}]'.format(count)))
         )
     except:
-        print("Couldn't load Page...")
+        print("Couldn't load Element...")
 
     # Getting text of an Insta. post... -------------------------------------------------------------------
     element = driver.find_elements_by_xpath(article + '/article[{}]'.format(count))
@@ -60,4 +65,5 @@ while True:
     driver.implicitly_wait(2)
 
     # Scrolling page for the height of the screen ---------------------------------------------------------
-    driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+    scroll += 1080
+    driver.execute_script("window.scrollTo(0, {});".format(scroll))
