@@ -5,20 +5,28 @@
 
     Use : Can be used to collect images to feed it to AL-ML model
 
-    -- Kshitij Sangar
+    -- Kshitij Sangar & Naman Modi
 """
+#!/usr/bin/python
+
+import sys
 
 from selenium import webdriver
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.common.keys import Keys
 import urllib.request
 
+argsLen = len(sys.argv)
+
+if argsLen == 1:
+    print("Please give the path to chrome driver.")
+elif argsLen > 2:
+    print("Please give the only 1 argument, that is, path to chrome driver. No other argument required.")
+
 # Important variables...
 search = 'cars'  # Object to search on the internet
-Download_Directory = 'Downloaded_Image'
-path = 'C:/Users\KSHITIJ R. SANGAR\Desktop\Kshitij Projects\Python projects\chromedriver_win32\chromedriver.exe'
-
-
+Download_Directory = 'Downloaded_Image' #please put the path for storing downloaded images
+path = str(sys.argv[1])
 
 # Setting up path the chrome driver.
 driver = webdriver.Chrome(path)
