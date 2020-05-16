@@ -3,6 +3,8 @@ This script logins to your Instagram Account and
 displays the text of all the posts by simultaneous
 scrolling.
 """
+#!/usr/bin/python
+import sys
 
 from selenium import webdriver
 from sys_rar import PracticePWD
@@ -11,8 +13,18 @@ from selenium.webdriver.common.by  import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as ec
 
+argsLen = len(sys.argv)
+
+if argsLen == 1:
+    print("Please give the path to chrome driver.")
+elif argsLen > 2:
+    print("Please give the only 1 argument, that is, path to chrome driver. No other argument required.")
+
+#setting the path for the driver   
+path = str(sys.argv[1])
+
 # Driver Location
-driver = webdriver.Chrome("C:/Users\KSHITIJ R. SANGAR\Desktop\Kshitij Projects\Python projects\chromedriver_win32\chromedriver.exe")
+driver = webdriver.Chrome(path)
 
 # Getting the INSTAGRAM login page
 path = 'https://www.instagram.com/accounts/login/'
