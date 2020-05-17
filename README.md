@@ -10,7 +10,13 @@ This repository is for all the demo codes which were used for the session <b><i>
   </li>
   <li>
     <h3>Web Driver</h3>
-    Depending on the web browser you are using you will need to install the webdriver.
+    Depending on the web browser you are using, you will need to install the webdriver.
+    <h5> Steps to download the webdriver </h5>
+    <ol> 
+        <li> Open a tab in your browser. Go into the settings and find out it's version number.
+        <li> Visit this Site : https://sites.google.com/a/chromium.org/chromedriver/downloads 
+        <li> Download the driver that matches the version number of your chrome. And you are good to go.
+    </ol>
   </li>
 </ul>
 
