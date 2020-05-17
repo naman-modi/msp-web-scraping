@@ -1,4 +1,6 @@
 """
+Download BOT :
+
     This Script makes a google for a particular object
     and downloads all the images of that object from the
     image section in 'Downloaded_Image' Directory
@@ -7,26 +9,18 @@
 
     -- Kshitij Sangar & Naman Modi
 """
-#!/usr/bin/python
 
-import sys
 
 from selenium import webdriver
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.common.keys import Keys
 import urllib.request
 
-argsLen = len(sys.argv)
-
-if argsLen == 1:
-    print("Please give the path to chrome driver.")
-elif argsLen > 2:
-    print("Please give the only 1 argument, that is, path to chrome driver. No other argument required.")
-
 # Important variables...
 search = 'cars'  # Object to search on the internet
-Download_Directory = 'Downloaded_Image' #please put the path for storing downloaded images
-path = str(sys.argv[1])
+Download_Directory = 'Downloaded_Image'
+path = 'C:/Users\KSHITIJ R. SANGAR\Desktop\Kshitij Projects\Python projects\chromedriver_win32\chromedriver.exe'
+
 
 # Setting up path the chrome driver.
 driver = webdriver.Chrome(path)
@@ -64,3 +58,5 @@ while True:
     except:
         # If a particular Xpath is not found, it is skipped
         print(str(count) + ' Not found ')
+
+driver.close() # Closes the tab
