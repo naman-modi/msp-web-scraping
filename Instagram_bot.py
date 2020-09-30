@@ -13,8 +13,9 @@ from selenium.webdriver.common.by  import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as ec
 
-argsLen = len(sys.argv)
 
+#You can either pass the argument from command prompt or send it manually.
+argsLen = len(sys.argv)
 if argsLen == 1:
     print("Please give the path to chrome driver.")
 elif argsLen > 2:
@@ -31,28 +32,25 @@ path = 'https://www.instagram.com/accounts/login/'
 driver.get(path)
 
 # Waiting to load the page
-driver.implicitly_wait(5)
+driver.implicitly_wait(4)
 
 
 # Sending UserName to the TextBox ------------------------------------------------------------------------
-driver.find_element_by_xpath('//*[@id="react-root"]/section/main/div/article/div/div[1]/div/form/div[2]/div/label/input').send_keys("_.h.o.r.i.z.o.n._")
+driver.find_element_by_xpath('//*[@id="react-root"]/section/main/div/article/div/div[1]/div/form/div[2]/div/label/input').send_keys("YourInsta_Userid")
 
 # Sending Password to the TextBox
-driver.find_element_by_xpath('//*[@id="react-root"]/section/main/div/article/div/div[1]/div/form/div[3]/div/label/input').send_keys(PracticePWD)
+driver.find_element_by_xpath('//*[@id="react-root"]/section/main/div/article/div/div[1]/div/form/div[3]/div/label/input').send_keys("YourInsta_Password")
 
 # Click on the submit button
 driver.find_element_by_xpath('//*[@id="react-root"]/section/main/div/article/div/div[1]/div/form/div[4]').click()
 driver.implicitly_wait(5)
-
 
 # Notification Pop-up ------------------------------------------------------------------------------------
 if "Try on desktop" in driver.page_source:
      driver.find_element_by_xpath('/html/body/div[4]/div/div/div[3]/button[2]').click()
      driver.implicitly_wait(20)
 
-
-
-article = '//*[@id="react-root"]/section/main/section/div/div[2]/div'
+article = '//*[@id="react-root"]/section/main/section/div/div[2]/div' #It grab the information of a particular article at a time.
 count = j = 0
 scroll = 0
 while j <= 20:
@@ -77,5 +75,5 @@ while j <= 20:
     driver.implicitly_wait(2)
 
     # Scrolling page for the height of the screen ---------------------------------------------------------
-    scroll += 1080
+    scroll += 1070 #Page will scroll by 1070 pixels
     driver.execute_script("window.scrollTo(0, {});".format(scroll))
